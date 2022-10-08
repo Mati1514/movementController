@@ -1,0 +1,51 @@
+from face_reco_video import face
+from senser_test import distance
+from motor import Motor
+from rgb import Rgb
+from time import sleep
+
+motor = Motor()
+color= Rgb()
+x=distance()
+
+
+
+if "Robera" in face:
+    names=face.index("Robera")
+    name=face[names]
+    print(f"Welcome {name}")
+    color.green()
+    sleep(5)
+    color.turnOff()
+
+while (x):
+    if x < 10:
+        color.red()
+        sleep(3)
+        color.turnOff()
+        motor.moveB(40,3)
+        sleep(2)
+        motor.moveF(40,4)
+        if 10<x<=25:
+            color.yellow()
+            sleep(3)
+            color.turnOff()
+            motor.moveF(30,2)
+    elif x > 25:
+        color.white()
+        sleep(3)
+        color.turnOff()
+        motor.moveF(100,2)
+        motor.stop()
+
+    elif 10<x<=25:
+        color.yellow()
+        sleep(3)
+        color.turnOff()
+        motor.moveF(30,2)
+    elif x > 25:
+        color.white()
+        sleep(3)
+        color.turnOff()
+        motor.moveF(100,2)
+        motor.stop()
